@@ -1,0 +1,41 @@
+version: "3"
+services:
+    # prest:
+    #     build: .
+    #     # links:
+    #     #     - "postgres:postgres"
+    #     environment:
+    #         - PREST_DEBUG=true # remove comment for enable DEBUG mode (disable JWT)
+    #         - PREST_PG_HOST=postgres
+    #         - PREST_PG_USER=prest
+    #         - PREST_PG_PASS=prest
+    #         - PREST_PG_DATABASE=prest
+    #         - PREST_PG_PORT=5432
+    #     # depends_on:
+    #     #     - postgres
+    #     ports:
+    #         - "3000:3000"
+    postgres:
+        image: postgres:9.6
+        # volumes:
+            # - "./data:/var/lib/postgresql/data"
+        environment:
+            - POSTGRES_USER=segment
+            - POSTGRES_DB=segment
+            - POSTGRES_PASSWORD=segment
+        ports:
+            - "5432:5432"
+    mongodb:
+        image: mongo:latest
+        # container_name: "mongodb"
+        # environment:
+        #   - MONGO_DATA_DIR=/data
+        #   - MONGO_LOG_DIR=/dev/null
+        # volumes:
+        #   - ./data/db:/data/db
+        ports:
+            - 27017:27017
+        # command: mongod --dbpath --smallfiles --logpath=/dev/null # --quiet
+        environment:
+            - MONGODB_USER="segment" 
+            - MONGODB_PASS="segment"

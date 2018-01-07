@@ -1,20 +1,35 @@
 version: "3"
 services:
-    # prest:
-    #     build: .
-    #     # links:
-    #     #     - "postgres:postgres"
-    #     environment:
-    #         - PREST_DEBUG=true # remove comment for enable DEBUG mode (disable JWT)
-    #         - PREST_PG_HOST=postgres
-    #         - PREST_PG_USER=prest
-    #         - PREST_PG_PASS=prest
-    #         - PREST_PG_DATABASE=prest
-    #         - PREST_PG_PORT=5432
-    #     # depends_on:
-    #     #     - postgres
-    #     ports:
-    #         - "3000:3000"
+    segment:
+        # restart: always
+        build: /Users/user/projects/bigData/spark/geoFusion/api-segment/project
+        # volumes:
+        #     - ${PROJECT_PATH}/segment/:/opt/app
+        #     - /Users/user/projects/bigData/spark/geoFusion/api-segment/project/:/opt/app
+        ports:
+            - "8000:8082"
+        # env_file:
+        #     - ./docker-base.env
+        environment:
+            - DJANGO_SETTINGS_MODULE=project.settings
+            - VIRTUAL_HOST=0.0.0.0
+            - VIRTUAL_PORT=8000
+        links:
+            - "mongodb:mongodb"
+            - "postgres:postgres"
+            # - memcached_host
+            # - redis_host
+            # - elasticsearch_host
+        # depends_on:
+        #     - mongodb
+        #     - postgres
+        # networks:
+        #     frontend-apis:
+        #     aliases:
+        #         - backend.app_painel.local
+        # default:
+        #     certs:
+        #     nginx-log:
     postgres:
         image: postgres:9.6
         # volumes:

@@ -63,7 +63,7 @@ class ImportViewSet(MongoModelViewSet):
     """
     Try out this view with the following curl command:
 
-    curl -X POST http://localhost:8000/talks/bulk_upload/ \
+    curl -X POST http://localhost:81/talks/bulk_upload/ \
         -d "speaker,topic,scheduled_at
             Ana Balica,Testing,2016-11-03T15:15:00+01:00
             Aymeric Augustin,Debugging,2016-11-03T16:15:00+01:00" \

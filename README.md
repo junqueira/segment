@@ -1,20 +1,19 @@
 
-# Data Processing
-
-jupyter notebook
+# Data Processing jupyter notebook
 =========================================
+
+    python, mongo engine, api rest autheticator, spark, etc...
 
 ## I tested it on Debian 8.
 
     docker-compose build && up
 
-
 ## Try out this view with the following curl command:
 
-    http://192.168.99.102:8000/api/bairro-mongo/?format=json
+    http://34.239.113.110:8000/api/bairro-mongo/?format=json
 
 
-curl -X POST http://192.168.99.102:8000/api/bairro-mongo/bulk_upload/ \
+curl -X POST http://34.239.113.110:8000/api/bairro-mongo/bulk_upload/ \
         -d "codigo,nome,municipio,uf,area
             355620110,Observatório,Valinhos,SP,68.0009
             3519071024,Rp 6-24,Hortolândia,SP,0.981768
@@ -29,8 +28,9 @@ curl -X POST http://192.168.99.102:8000/api/bairro-mongo/bulk_upload/ \
                            --amazonec2-subnet-id subnet-16c84872 \
                            --amazonec2-ami ami-1b17257b \
                            --amazonec2-access-key $AWS_ACCESS_KEY_ID \
-                           --amazonec2-secret-key $AWS_SECRET_ACCESS_KEY \
-                           aws-swarm-manager
+                           --amazonec2-secret-key $AWS_SECRET_ACCESS_KEY aws-swarm-manager
+
+
 Running pre-create checks...
 Creating machine...
 (aws-swarm-manager) Launching instance...

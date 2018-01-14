@@ -100,7 +100,7 @@ WSGI_APPLICATION = 'project.wsgi.application'
 MONGODB_DATABASES = {
     "default": {
         "name": "project",
-        "host": "34.239.113.110",
+        "host": "172.31.93.141",
         "port": 27017,
         "tz_aware": True,  # if you use timezones in django (USE_TZ = True)
     },
@@ -141,24 +141,13 @@ mongoengine.connect(
     host=MONGODB_DATABASES[db]['host']
 )
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'segment',
-#         'USER': 'segment',
-#         'PASSWORD': 'segment',
-#         'HOST': '192.168.99.102',
-#         'PORT': '5432',
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'segment',
         'USER': 'segment',
         'PASSWORD': 'segment',
-        'HOST': '34.239.113.110',
+        'HOST': '172.31.93.141',
         'PORT': '5432',
     }
 }

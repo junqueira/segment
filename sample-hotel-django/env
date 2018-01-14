@@ -1,0 +1,8 @@
+# Create conda enviroment
+# > conda create --name hotel-arq python=2.7
+# To activate this environment, use:
+source activate hotel-arq
+
+
+# To deactivate an active environment, use:
+# > source deactivate

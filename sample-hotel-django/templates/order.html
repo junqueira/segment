@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Pedido{% endblock %}
+{% block wraptype %}
+    <div class="wrap order about">
+{% endblock %}
+{% block content %}
+
+
+            <div class="banner">
+                <ul>
+                    <li>
+                        {% load staticfiles %}
+                        <img src="{%  static "pic/6240454_091935658000_2.jpg" %}" >
+                    </li>
+                </ul>
+
+                <div id="hotelDescription">
+                    <h2>Reserve ja:</h2>
+                    <p>
+                        <form action="/orderresult" method="get">
+                            <input type="text" name="name" placeholder="Nome">
+                            <input type="text" name="tel" placeholder="Telefone">
+                            <input type="text" name="cardid" placeholder="Cartao">
+                              Tipo quarto： <select name="roomtype">
+                                <option value="standard">Padrao</option>
+                                <option value="better">Melhorado</option>
+                                <option value="president">Presidente</option>
+                            </select>
+                            <input type="text" name="begin"  placeholder="01:15, 14/01/2018">
+                            <input type="text" name="end"  placeholder="23:59, 14/01/2018">
+                            <input type="submit" value="Enviar">
+                        </form>
+                    </p>
+                </div>
+            </div>
+
+{% endblock %}

@@ -1,5 +1,35 @@
 version: "3"
 services:
+    hotel:
+        # restart: always
+        build: /Users/user/projects/bigData/spark/geoFusion/sample-hotel-django
+        # volumes:
+        #     - ${PROJECT_PATH}/segment/:/opt/app
+        #     - /Users/user/projects/project/:/opt/app
+        ports:
+            - "8002:8082"
+        # env_file:
+        #     - ./docker-base.env
+        environment:
+            - DJANGO_SETTINGS_MODULE=kcsj.settings
+            - VIRTUAL_HOST=0.0.0.0
+            - VIRTUAL_PORT=8000
+        links:
+            # - "mongodb:mongodb"
+            - "postgres:postgres"
+            # - memcached_host
+            # - redis_host
+            # - elasticsearch_host
+        # depends_on:
+        #     - mongodb
+        #     - postgres
+        # networks:
+        #     frontend-apis:
+        #     aliases:
+        #         - backend.app_painel.local
+        # default:
+        #     certs:
+        #     nginx-log:
     segment:
         # restart: always
         build: /Users/user/projects/bigData/spark/geoFusion/api-segment/project
@@ -16,7 +46,7 @@ services:
             - VIRTUAL_PORT=8000
         links:
             - "mongodb:mongodb"
-            - "postgres:postgres"
+            #- "postgres:postgres"
             # - memcached_host
             # - redis_host
             # - elasticsearch_host
@@ -54,3 +84,13 @@ services:
         environment:
             - MONGODB_USER="segment" 
             - MONGODB_PASS="segment"
+    openvpn:
+        cap_add:
+            - NET_ADMIN
+        image: kylemanna/openvpn
+        container_name: openvpn
+        ports:
+            - "1194:1194/udp"
+        restart: always
+        volumes:
+            - ./openvpn-data/conf:/etc/openvpn
